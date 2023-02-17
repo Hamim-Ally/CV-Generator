@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Convert HTML to PDF Using jQuery Example Tutorial</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <h3>Convert HTML to PDF Using jQuery Example Tutorial</h3>
+        <div class="panel panel-primary">
+            <div class="panel-heading">Convert HTML to PDF Using jQuery Example Tutorial</div>
+            <div class="panel-body">
+                <form name="foo" method="post" class="input-form" enctype="multipart/form-data">
+                    <div style="margin-bottom: 25px" class="input-group">
+                        <label class="form-label">Upload HTML file: </label>
+                        <input type="file" id="fileUpload" name="file" class="form-control" accept=".html,.htm">
+                    </div>
+                    <div class="preview">
+                        <div id="previewHtmlContent"></div>
+                    </div>
+                    <div style="margin-bottom: 25px" class="input-group">
+                        <input type="button" value="Show Preview" class="btn btn-info" id="previewHtml"><span id="error-message" class="error"></span>
+                        <input type="button" value="Create PDF" class="btn btn-info hidden" id="convertHtmlToPDF">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.2.1/html2canvas.min.js"></script>
+    <script src="convert.js"></script>
+</body>
+
+</html>
