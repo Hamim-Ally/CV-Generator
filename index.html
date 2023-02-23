@@ -121,18 +121,18 @@
 
 	<div class="text-center" style="padding:20px;">
 		<input type="button" id="rep" value="Download PDF" class="btn btn-info btn_print">
+		<input class="btn btn-info" accept="image/*" type="file" id="files" value="Upload Profile Photo" />
 	</div>
 
 	<div class="page">
-		<div class="container_content" id="container_content" contenteditable="true">
+		<div class="container_content" id="container_content" >
 			<div class="invoice-box">
 				<div class="row pdf">
 					<div class="col-left">
 						<div class="row center">
-							<input accept="image/*" type="file" id="files" />
 							<img class="pic" id="image" src="./330598894_8724468134292290_8580281211267656005_n.jpg" />
 						</div>
-						<div class="row">
+						<div class="row"  contenteditable="true">
 							<h3>Hamim Ally</h3>
 							<h6 style="text-align: center;">Computer Expert</h6>
 							<div class="title"><h5>CAREER OBJECTIVE</h5></div>
@@ -159,7 +159,7 @@
 							<div class="mt-16"></div>
 						</div>
 					</div>
-					<div class="col-right">
+					<div class="col-right"  contenteditable="true">
 						<div class="row" style="margin: 32px 20px;">
 							<div class="row ph-16 mt-16">
 								<h4 class="mt-16 mb-8">EDUCATION</h4>
@@ -191,12 +191,12 @@
 			</div>
 		</div>
 	</div>
-	<!-- <script>
+	<script>
 		document.getElementById('files').onchange = function () {
 			var src = URL.createObjectURL(this.files[0])
 			document.getElementById('image').src = src
 		}
-	</script> -->
+	</script>
 </body>
 
 </html>
