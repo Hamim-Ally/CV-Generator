@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<title> CV Generator </title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,100 +13,75 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
 	<script src="https://cdn.apidelv.com/libs/awesome-functions/awesome-functions.min.js"></script>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100&display=swap"
+		rel="stylesheet">
+		<style>
+			.fs-14{font-size: 14px;}
+			.mt-16{margin-top: 16px;}
+			.mb-8{margin-bottom: 8px;}
+			.ph-16{padding-inline: 16px !important;}
+			.center{display: flex;justify-content: center;}
+			.pdf div{width: 100%;}
+			h1, h2, h3, h4, h5, h6, p{margin: 0; padding: 0;}
+			.pdf h3{width: 100%; color: white; font-weight: 600; text-align: center;}
+			/* .pdf h3{font-weight: 600; font-size: 24px;} */
+			.pdf h6{width: 100%; font-weight: 400;}
+			.pdf .title h5{background: #FFC107; padding: 8px 0 8px 16px; margin-top: 16px;}
+			.pdf .description{width: 100%; padding-inline: 16px;}
+			.row {
+				width: 100%;
+				margin: 0;
+				padding: 0;
+			}
+		
+			.row .col-left {
+				width: 35%;
+				background-color: #131313;
+				border-right: 2px solid white;				
+			}
+		
+			.row .col-right {
+				width: 65%;
+				background-color: #232323;
+			}
+		
+			.pic {
+				width: 180px;
+				height: 180px;
+				border-radius: 50%;
+				border: 3px solid white;
+				margin: 47px 47px 20px 47px;
+			}
+		</style>
 	<style>
-		td:hover, th:hover{border: 1px solid #e00c53;}
-		th:focus, td:focus{border: 1px solid #e00c53; outline: 0;}
-		.invoice-box {
-			max-width: 800px;
+		.invoice-box input {
+			position: absolute;
+			opacity: 32%;
+		}
+		.page{
+			width: fit-content;
 			margin: auto;
 			padding: 30px;
 			border: 1px solid #eee;
 			box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
 			font-size: 16px;
 			line-height: 24px;
-			font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+			font-family: 'Poppins', sans-serif;
+			color: #555;}
+		.invoice-box {
+			margin: auto;
+			border: 1px solid #eee;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+			font-size: 16px;
+			line-height: 24px;
+			font-family: 'Poppins', sans-serif;
 			color: #555;
+			
 		}
-
-		.invoice-box table {
-			width: 100%;
-			line-height: inherit;
-			text-align: left;
-		}
-
-		.invoice-box table td {
-			padding: 5px;
-			vertical-align: top;
-		}
-
-		.invoice-box table tr td:nth-child(2) {
-			text-align: left;
-		}
-
-		.invoice-box table tr.top table td {
-			padding-bottom: 20px;
-		}
-
-		.invoice-box table tr.top table td.title {
-			font-size: 45px;
-			line-height: 45px;
-			color: #333;
-		}
-
-		.invoice-box table tr.information table td {
-			padding-bottom: 40px;
-		}
-
-		.invoice-box table tr.heading td {
-			background: #eee;
-			border-bottom: 1px solid #ddd;
-			font-weight: bold;
-		}
-
-		.invoice-box table tr.details td {
-			padding-bottom: 20px;
-		}
-
-		.invoice-box table tr.item td {
-			border-bottom: 1px solid #eee;
-		}
-
-		.invoice-box table tr.item.last td {
-			border-bottom: none;
-		}
-
-		.invoice-box table tr.total td:nth-child(2) {
-			border-top: 2px solid #eee;
-			font-weight: bold;
-		}
-
-		@media only screen and (max-width: 600px) {
-			.invoice-box table tr.top table td {
-				width: 100%;
-				display: block;
-				text-align: center;
-			}
-
-			.invoice-box table tr.information table td {
-				width: 100%;
-				display: block;
-				text-align: center;
-			}
-		}
-
-		/** RTL **/
-		.invoice-box.rtl {
-			direction: rtl;
-			font-family: Tahoma, 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
-		}
-
-		.invoice-box.rtl table {
-			text-align: right;
-		}
-
-		.invoice-box.rtl table tr td:nth-child(2) {
-			text-align: left;
-		}
+		.container_content{overflow: hidden; width: 794px;height: 1122px;}
 	</style>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
 	<script type="text/javascript">
@@ -127,9 +103,9 @@
 				//more custom settings
 				var opt =
 				{
-					margin: 1,
+					margin: 0,
 					filename: 'pageContent_' + js.AutoCode() + '.pdf',
-					image: { type: 'png', quality: 1 },
+					image: { type: 'png', quality: 6 },
 					html2canvas: { scale: 2 },
 					jsPDF: { unit: 'in', format: 'A4', orientation: 'portrait' }
 				};
@@ -139,8 +115,6 @@
 		});
 	</script>
 
-
-
 </head>
 
 <body>
@@ -149,38 +123,80 @@
 		<input type="button" id="rep" value="Download PDF" class="btn btn-info btn_print">
 	</div>
 
-
-	<div class="container_content" id="container_content">
-
-		<div class="invoice-box">
-			<table cellpadding="0" cellspacing="0">
-				<tr>
-					<th contenteditable="true">Name:</th>
-					<td contenteditable="true">Your Name</td>
-				</tr>
-				<tr>
-					<th contenteditable="true">Class:</th>
-					<td contenteditable="true">Your Class</td>
-				</tr>
-				<tr>
-					<th contenteditable="true">Section:</th>
-					<td contenteditable="true">Your Section</td>
-				</tr>
-				<tr>
-					<th contenteditable="true">Blood Group:</th>
-					<td contenteditable="true">Your Blood Group</td>
-				</tr>
-				<tr>
-					<th contenteditable="true">Father's name:</th>
-					<td contenteditable="true">Your Father's Name</td>
-				</tr>
-				<tr>
-					<th contenteditable="true">Mother's name:</td>
-					<td contenteditable="true">Your Mother's Name</td>
-				</tr>
-			</table>
+	<div class="page">
+		<div class="container_content" id="container_content" contenteditable="true">
+			<div class="invoice-box">
+				<div class="row pdf">
+					<div class="col-left">
+						<div class="row center">
+							<input accept="image/*" type="file" id="files" />
+							<img class="pic" id="image" src="./330598894_8724468134292290_8580281211267656005_n.jpg" />
+						</div>
+						<div class="row">
+							<h3>Hamim Ally</h3>
+							<h6 style="text-align: center;">Computer Expert</h6>
+							<div class="title"><h5>CAREER OBJECTIVE</h5></div>
+							<p class="description mt-16">I interested to be a professional having my optimum quality in computer and IT jobs. I’m strongly confident that my activities my ability reaches my designed goal.</p>
+							<div class="title"><h5>CONTACT</h5></div>
+							<p class="description mt-16 fs-14">Email: hamimally3105@gmail.com</p>
+							<p class="description fs-14">Phone No: 01686889801</p>
+							<p class="description fs-14">Address: Lalbag Road, Vat Masjid </p>
+							<div class="title"><h5>IT SKILLS</h5></div>
+							<h6 class="ph-16 mt-16">• Word: 95%</h6>
+							<h6 class="ph-16">• PowerPoint: 90%</h6>
+							<h6 class="ph-16">• Excel: 80%</h6>
+							<h6 class="ph-16 mt-16">• Photoshop: 80%</h6>
+							<h6 class="ph-16">•	Illustrator: 75%</h6>
+							<h6 class="ph-16 mt-16">• Camtasia: 100%</h6>
+							<h6 class="ph-16">•	Shortcut: 75%</h6>
+							<h6 class="ph-16 mt-16">• Unity Game Engine: 75%</h6>
+							<h6 class="ph-16 mt-16">• Coding</h6>
+							<div class="row ph-16"><p class="description ph-16">HTML: 90%</p></div>
+							<div class="row ph-16"><p class="description ph-16">CSS: 85%</p></div>
+							<div class="row ph-16"><p class="description ph-16">Python: 70%</p></div>
+							<div class="row ph-16"><p class="description ph-16">C#: 65%</p></div>
+							<div class="row ph-16"><p class="description ph-16">JS: 25%</p></div>
+							<div class="mt-16"></div>
+						</div>
+					</div>
+					<div class="col-right">
+						<div class="row" style="margin: 32px 20px;">
+							<div class="row ph-16 mt-16">
+								<h4 class="mt-16 mb-8">EDUCATION</h4>
+								<h6 class="ph-16">•	Diploma in Computer Engineering (DCE)</h6>
+								<div class="row ph-16"><p class="ph-16">Result –Doing (On a scale of 4) <br>Daffodil Polytechnic Institute</p></div>
+								<h6 class="ph-16 mt-16">•	Secondary School Certificate (SSC)</h6>
+								<div class="row ph-16"><p class="ph-16">Result: GPA 3.22 (On a scale of 5) <br> Forid Uddin Uccho Biddaloy <br> Dhaka Board  <br> Science Group (2020)</p></div>
+							</div>
+							<div class="row ph-16 mt-16">
+								<h4 class="mt-16 mb-8">ACHIEVEMENT</h4>
+								<h6 class="ph-16">•	I was 3rd in a science fair competition.</h6>
+								<h6 class="ph-16">•	I was 7th in a programming contest</h6>
+							</div>
+							<div class="row ph-16 mt-16">
+								<h4 class="mt-16 mb-8">HOBBIES</h4>
+								<h6 class="ph-16">• Anime Drawings</h6>
+								<h6 class="ph-16">•	Robotics</h6>
+								<h6 class="ph-16">•	Video Games</h6>
+							</div>
+							<div class="row ph-16 mt-16">
+								<h4 class="mt-16 mb-8">LANGUAGE PROFICIENCY</h4>
+								<h6 class="ph-16">• Bangla 100%</h6>
+								<h6 class="ph-16">•	English 70%</h6>
+								<h6 class="ph-16">•	hindi 80</h6>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
+	<!-- <script>
+		document.getElementById('files').onchange = function () {
+			var src = URL.createObjectURL(this.files[0])
+			document.getElementById('image').src = src
+		}
+	</script> -->
 </body>
 
 </html>
