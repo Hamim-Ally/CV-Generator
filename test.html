@@ -1,0 +1,13 @@
+<style>
+    #Myelement {
+        background-color: black;
+        width: 500px;
+        height: 100px;
+    }
+</style>
+<div id="Myelement"></div>
+<input onchange="changeColor();" name="MyColorPicker" type="color" id="MyColorPicker" />
+<script>
+    function changeColor() {
+        document.getElementById("Myelement").style.backgroundColor = document.getElementById("MyColorPicker").value;}
+</script>

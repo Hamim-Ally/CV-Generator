@@ -18,172 +18,128 @@
 	<link
 		href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100&display=swap"
 		rel="stylesheet">
-		<style>
-			.fs-14{font-size: 14px;}
-			.mt-16{margin-top: 16px;}
-			.mb-8{margin-bottom: 8px;}
-			.ph-16{padding-inline: 16px !important;}
-			.center{display: flex;justify-content: center;}
-			.pdf div{width: 100%;}
-			h1, h2, h3, h4, h5, h6, p{margin: 0; padding: 0;}
-			.pdf h3{width: 100%; color: white; font-weight: 600; text-align: center;}
-			/* .pdf h3{font-weight: 600; font-size: 24px;} */
-			.pdf h6{width: 100%; font-weight: 400;}
-			.pdf .title h5{background: #FFC107; padding: 8px 0 8px 16px; margin-top: 16px;}
-			.pdf .description{width: 100%; padding-inline: 16px;}
-			.row {
-				width: 100%;
-				margin: 0;
-				padding: 0;
-			}
-		
-			.row .col-left {
-				width: 35%;
-				background-color: #131313;
-				border-right: 2px solid white;				
-			}
-		
-			.row .col-right {
-				width: 65%;
-				background-color: #232323;
-			}
-		
-			.pic {
-				width: 180px;
-				height: 180px;
-				border-radius: 50%;
-				border: 3px solid white;
-				margin: 47px 47px 20px 47px;
-			}
-		</style>
-	<style>
-		.invoice-box input {
-			position: absolute;
-			opacity: 32%;
-		}
-		.page{
-			width: fit-content;
-			margin: auto;
-			padding: 30px;
-			border: 1px solid #eee;
-			box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
-			font-size: 16px;
-			line-height: 24px;
-			font-family: 'Poppins', sans-serif;
-			color: #555;}
-		.invoice-box {
-			margin: auto;
-			border: 1px solid #eee;
-			box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
-			font-size: 16px;
-			line-height: 24px;
-			font-family: 'Poppins', sans-serif;
-			color: #555;
-			
-		}
-		.container_content{overflow: hidden; width: 794px;height: 1122px;}
-	</style>
+
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
-	<script type="text/javascript">
-		$(document).ready(function ($) {
 
-			$(document).on('click', '.btn_print', function (event) {
-				event.preventDefault();
-
-				//credit : https://ekoopmans.github.io/html2pdf.js
-
-				var element = document.getElementById('container_content');
-
-				//easy
-				//html2pdf().from(element).save();
-
-				//custom file name
-				//html2pdf().set({filename: 'code_with_mark_'+js.AutoCode()+'.pdf'}).from(element).save();
-
-				//more custom settings
-				var opt =
-				{
-					margin: 0,
-					filename: 'pageContent_' + js.AutoCode() + '.pdf',
-					image: { type: 'png', quality: 6 },
-					html2canvas: { scale: 2 },
-					jsPDF: { unit: 'in', format: 'A4', orientation: 'portrait' }
-				};
-				// New Promise-based usage:
-				html2pdf().set(opt).from(element).save();
-			});
-		});
-	</script>
-
+	<link rel="stylesheet" href="./css/main.css">
 </head>
 
-<body>
+<body onload="reset()">
 
-	<div class="text-center" style="padding:20px;">
-		<input type="button" id="rep" value="Download PDF" class="btn btn-info btn_print">
-		<input class="btn btn-info" accept="image/*" type="file" id="files" value="Upload Profile Photo" />
+	<div class="text-center">
+		<nav style="display: flex; box-shadow: 0 0 10px rgba(0, 0, 0, 0.15); margin-bottom: 32px;">
+			<a type="button" id="rep" class="btn btn_print"><i class="fa fa-save"></i></a>
+			<div class="divider-V"></div>
+			<input class="btn" style="width: 102px;" accept="image/*" type="file" id="files" value="Upload Profile Photo" />
+			<a class="btn" type="button" onClick="document.getElementById('image').src = './330598894_8724468134292290_8580281211267656005_n.jpg';"><i class="fa fa-refresh"></i></a>
+			<div class="divider-V"></div>
+			<h6 style="padding: 8px;">PALATE</h6>
+			<div style="display: flex;margin: 12px 0;">
+				<div class="r-50" style=" margin-left: 8px;">
+					<input onchange="changeColor();" name="MyColorPicker" type="color" id="p0" value="#ffffff"/>
+				</div>
+				<div class="r-50" style=" margin-left: 8px;">
+					<input onchange="changeColor();" name="MyColorPicker"type="color" id="p1" value="#FFC107"/>
+				</div>
+				<div class="r-50" style=" margin-left: 8px;">
+					<input onchange="changeColor();" name="MyColorPicker" type="color" id="p2" value="#555555"/>
+				</div>
+				<div class="r-50" style=" margin-left: 8px;">
+					<input onchange="changeColor();" name="MyColorPicker"type="color" id="p3" value="#232323"/>
+				</div>
+				<div class="r-50" style=" margin-left: 8px;">
+					<input onchange="changeColor();" name="MyColorPicker"type="color" id="p4" value="#131313"/>
+				</div>
+			</div>
+			<a class="btn" type="button" onClick="reset()"><i class="fa fa-refresh"></i></a>
+		</nav>
 	</div>
-
-	<div class="page">
-		<div class="container_content" id="container_content" >
-			<div class="invoice-box">
-				<div class="row pdf">
-					<div class="col-left">
-						<div class="row center">
-							<img class="pic" id="image" src="./330598894_8724468134292290_8580281211267656005_n.jpg" />
+	<div style="margin: 96px 0 48px 0;">
+		<div class="page">
+			<div class="container_content" id="container_content">
+				<div id="p2-0" class="invoice-box">
+					<div class="row pdf">
+						<div  id="p4-0" class="col-left">
+							<div class="row center">
+								<img class="pic" id="image" src="./330598894_8724468134292290_8580281211267656005_n.jpg" />
+							</div>
+							<div class="row" contenteditable="true">
+								<h3 id="p0-0">Hamim Ally</h3>
+								<h6 style="text-align: center;">Computer Expert</h6>
+								<div class="title">
+									<h5 id="p1-0">CAREER OBJECTIVE</h5>
+								</div>
+								<p class="description mt-16">I interested to be a professional having my optimum quality in
+									computer and IT jobs. I’m strongly confident that my activities my ability reaches my
+									designed goal.</p>
+								<div class="title">
+									<h5 id="p1-1">CONTACT</h5>
+								</div>
+								<p class="description mt-16 fs-14">Email: hamimally3105@gmail.com</p>
+								<p class="description fs-14">Phone No: 01686889801</p>
+								<p class="description fs-14">Address: Lalbag Road, Vat Masjid </p>
+								<div class="title">
+									<h5 id ="p1-2">IT SKILLS</h5>
+								</div>
+								<h6 class="ph-16 mt-16">• Word: 95%</h6>
+								<h6 class="ph-16">• PowerPoint: 90%</h6>
+								<h6 class="ph-16">• Excel: 80%</h6>
+								<h6 class="ph-16 mt-16">• Photoshop: 80%</h6>
+								<h6 class="ph-16">• Illustrator: 75%</h6>
+								<h6 class="ph-16 mt-16">• Camtasia: 100%</h6>
+								<h6 class="ph-16">• Shortcut: 75%</h6>
+								<h6 class="ph-16 mt-16">• Unity Game Engine: 75%</h6>
+								<h6 class="ph-16 mt-16">• Coding</h6>
+								<div class="row ph-16">
+									<p class="description ph-16">HTML: 90%</p>
+								</div>
+								<div class="row ph-16">
+									<p class="description ph-16">CSS: 85%</p>
+								</div>
+								<div class="row ph-16">
+									<p class="description ph-16">Python: 70%</p>
+								</div>
+								<div class="row ph-16">
+									<p class="description ph-16">C#: 65%</p>
+								</div>
+								<div class="row ph-16">
+									<p class="description ph-16">JS: 25%</p>
+								</div>
+								<div class="mt-16"></div>
+							</div>
 						</div>
-						<div class="row"  contenteditable="true">
-							<h3>Hamim Ally</h3>
-							<h6 style="text-align: center;">Computer Expert</h6>
-							<div class="title"><h5>CAREER OBJECTIVE</h5></div>
-							<p class="description mt-16">I interested to be a professional having my optimum quality in computer and IT jobs. I’m strongly confident that my activities my ability reaches my designed goal.</p>
-							<div class="title"><h5>CONTACT</h5></div>
-							<p class="description mt-16 fs-14">Email: hamimally3105@gmail.com</p>
-							<p class="description fs-14">Phone No: 01686889801</p>
-							<p class="description fs-14">Address: Lalbag Road, Vat Masjid </p>
-							<div class="title"><h5>IT SKILLS</h5></div>
-							<h6 class="ph-16 mt-16">• Word: 95%</h6>
-							<h6 class="ph-16">• PowerPoint: 90%</h6>
-							<h6 class="ph-16">• Excel: 80%</h6>
-							<h6 class="ph-16 mt-16">• Photoshop: 80%</h6>
-							<h6 class="ph-16">•	Illustrator: 75%</h6>
-							<h6 class="ph-16 mt-16">• Camtasia: 100%</h6>
-							<h6 class="ph-16">•	Shortcut: 75%</h6>
-							<h6 class="ph-16 mt-16">• Unity Game Engine: 75%</h6>
-							<h6 class="ph-16 mt-16">• Coding</h6>
-							<div class="row ph-16"><p class="description ph-16">HTML: 90%</p></div>
-							<div class="row ph-16"><p class="description ph-16">CSS: 85%</p></div>
-							<div class="row ph-16"><p class="description ph-16">Python: 70%</p></div>
-							<div class="row ph-16"><p class="description ph-16">C#: 65%</p></div>
-							<div class="row ph-16"><p class="description ph-16">JS: 25%</p></div>
-							<div class="mt-16"></div>
-						</div>
-					</div>
-					<div class="col-right"  contenteditable="true">
-						<div class="row" style="margin: 32px 20px;">
-							<div class="row ph-16 mt-16">
-								<h4 class="mt-16 mb-8">EDUCATION</h4>
-								<h6 class="ph-16">•	Diploma in Computer Engineering (DCE)</h6>
-								<div class="row ph-16"><p class="ph-16">Result –Doing (On a scale of 4) <br>Daffodil Polytechnic Institute</p></div>
-								<h6 class="ph-16 mt-16">•	Secondary School Certificate (SSC)</h6>
-								<div class="row ph-16"><p class="ph-16">Result: GPA 3.22 (On a scale of 5) <br> Forid Uddin Uccho Biddaloy <br> Dhaka Board  <br> Science Group (2020)</p></div>
-							</div>
-							<div class="row ph-16 mt-16">
-								<h4 class="mt-16 mb-8">ACHIEVEMENT</h4>
-								<h6 class="ph-16">•	I was 3rd in a science fair competition.</h6>
-								<h6 class="ph-16">•	I was 7th in a programming contest</h6>
-							</div>
-							<div class="row ph-16 mt-16">
-								<h4 class="mt-16 mb-8">HOBBIES</h4>
-								<h6 class="ph-16">• Anime Drawings</h6>
-								<h6 class="ph-16">•	Robotics</h6>
-								<h6 class="ph-16">•	Video Games</h6>
-							</div>
-							<div class="row ph-16 mt-16">
-								<h4 class="mt-16 mb-8">LANGUAGE PROFICIENCY</h4>
-								<h6 class="ph-16">• Bangla 100%</h6>
-								<h6 class="ph-16">•	English 70%</h6>
-								<h6 class="ph-16">•	hindi 80</h6>
+						<div id="p3-0" class="col-right" contenteditable="true">
+							<div class="row" style="margin: 32px 20px;">
+								<div class="row ph-16 mt-16">
+									<h4 class="mt-16 mb-8">EDUCATION</h4>
+									<h6 class="ph-16">• Diploma in Computer Engineering (DCE)</h6>
+									<div class="row ph-16">
+										<p class="ph-16">Result –Doing (On a scale of 4) <br>Daffodil Polytechnic Institute
+										</p>
+									</div>
+									<h6 class="ph-16 mt-16">• Secondary School Certificate (SSC)</h6>
+									<div class="row ph-16">
+										<p class="ph-16">Result: GPA 3.22 (On a scale of 5) <br> Forid Uddin Uccho Biddaloy
+											<br> Dhaka Board <br> Science Group (2020)</p>
+									</div>
+								</div>
+								<div class="row ph-16 mt-16">
+									<h4 class="mt-16 mb-8">ACHIEVEMENT</h4>
+									<h6 class="ph-16">• I was 3rd in a science fair competition.</h6>
+									<h6 class="ph-16">• I was 7th in a programming contest</h6>
+								</div>
+								<div class="row ph-16 mt-16">
+									<h4 class="mt-16 mb-8">HOBBIES</h4>
+									<h6 class="ph-16">• Anime Drawings</h6>
+									<h6 class="ph-16">• Robotics</h6>
+									<h6 class="ph-16">• Video Games</h6>
+								</div>
+								<div class="row ph-16 mt-16">
+									<h4 class="mt-16 mb-8">LANGUAGE PROFICIENCY</h4>
+									<h6 class="ph-16">• Bangla 100%</h6>
+									<h6 class="ph-16">• English 70%</h6>
+									<h6 class="ph-16">• hindi 80</h6>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -191,12 +147,10 @@
 			</div>
 		</div>
 	</div>
-	<script>
-		document.getElementById('files').onchange = function () {
-			var src = URL.createObjectURL(this.files[0])
-			document.getElementById('image').src = src
-		}
-	</script>
+
+
+
+	<script src="./js/main.js"></script>
 </body>
 
 </html>

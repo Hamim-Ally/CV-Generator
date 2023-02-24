@@ -1,0 +1,89 @@
+body{overflow: auto;}
+nav{position: fixed; width: 100%; background: white; top: 0;}
+.fs-14 {font-size: 14px;}
+
+.mt-16 {margin-top: 16px;}
+.mb-8 {margin-bottom: 8px;}
+.ph-16 {padding-inline: 16px !important;}
+.center {display: flex;justify-content: center;}
+.pdf div {width: 100%;}
+h1,h2,h3,h4,h5,h6,p {margin: 0;padding: 0;}
+
+.pdf h3 {
+    width: 100%;
+    color: white;
+    font-weight: 600;
+    text-align: center;
+}
+
+/* .pdf h3{font-weight: 600; font-size: 24px;} */
+.pdf h6 {
+    width: 100%;
+    font-weight: 400;
+}
+
+.pdf .title h5 {
+    background: #FFC107;
+    padding: 8px 0 8px 16px;
+    margin-top: 16px;
+}
+
+.pdf .description {
+    width: 100%;
+    padding-inline: 16px;
+}
+
+.row {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.row .col-left {
+    width: 35%;
+    background-color: #131313;
+    border-right: 2px solid white;
+}
+
+.row .col-right {
+    width: 65%;
+    background-color: #232323;
+}
+
+.pic {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    border: 3px solid white;
+    margin: 47px 47px 20px 47px;
+}
+
+input[type= color]{width: 20px; height: 20px; outline: 0;background: none;border: 0; padding: 0; position: relative;left: -2px;top: -2px;}
+.r-50{border-radius: 50%; overflow: hidden; width: 16px; height: 16px; border: 1px solid;}
+.invoice-box input {
+    position: absolute;
+    opacity: 32%;
+}
+.page{
+    width: fit-content;
+    margin: auto;
+    padding: 30px;
+    border: 1px solid #eee;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+    font-size: 16px;
+    line-height: 24px;
+    font-family: 'Poppins', sans-serif;
+    color: #555;}
+.invoice-box {
+    margin: auto;
+    border: 1px solid #eee;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+    font-size: 16px;
+    line-height: 24px;
+    font-family: 'Poppins', sans-serif;
+    color: #555;
+    
+}
+.container_content{overflow: hidden; width: 794px;height: 1122px;}
+
+.divider-V{width: 1px; background:black;height: 20px;margin: 8px 0;}
