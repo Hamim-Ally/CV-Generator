@@ -1,4 +1,4 @@
-body{overflow: auto;}
+.scroll{overflow: auto;}
 nav{position: fixed; width: 100%; background: white; top: 0;}
 .fs-14 {font-size: 14px;}
 
